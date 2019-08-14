@@ -1,0 +1,832 @@
+
+(C)2010-2010  面向对象的学习
+update: 2019-8-9 17:37:10
+person: Gang
+
+1.什么是面向对象？
+
+oop:重用性，灵活性，扩展性
+
+2.什么是类，什么是对象，类和对象之间的关系
+
+类：类是具有相同属性和服务的一组对象的集合
+
+对象：对象是系统中用来描述客观事物的一个实体，它是构成系统的一个基本单位。一个对象由一组属性和对这组属性 进行操作的一组服务组成。
+
+类和对象的关系
+类与对象的关系就如模具和铸件的关系，类的实例化结果就是对象，而对一类对象的抽象就是类.类描述了一组有相同特性（属性）和相同行为（方法）的对象。
+
+3.什么是面向对象编程呢？
+
+开发一个系统程序和建一个电脑教室类似，你把每个独立的功能模块抽象成类形成对象，由多个对象组成这个系统，这些对象之间都能够接收信息、处理数据和向其它对象发送信息等等相互作用。就构成了面向对象的程序。
+
+4.如何抽象出一个类
+
+类的定义：
+
+使用一个关键字class和后面加上一个你想要的类名以及加上一对大括号， 这样一个类的结构就定义出来了
+
+  class 类名 {
+
+        成员属性
+        成员方法
+
+  }
+
+  <?php
+
+class Person {
+    // 下面是人的成员属性
+    var $name;  // 人的名子
+    var $sex;   // 人的性别
+    var $age;   // 人的年龄
+
+    // 下面是人的成员方法
+    function say() { // 这个人可以说话的方法
+        echo "这个人在说话";
+    }
+
+    function run() { // 这个人可以走路的方法
+        echo "这个人在走路";
+    }
+}
+?>
+
+5.如何实例化对象？
+
+  当定义好一个类的时候，我们可以使用new关键字来生成一个对象
+
+   $对象名称 = new 类名称();
+
+       <?php
+    class Person {
+        // 下面是人的成员属性
+        var $name; // 人的名字
+        var $sex; // 人的性别
+        var $age; // 人的年龄
+
+        // 下面是人的成员方法
+        function say() { // 这个人可以说话的方法
+            echo "这个人在说话";
+        }
+
+        function run() { //这个人可以走路的方法
+            echo "这个人在走路";
+        }
+    }
+
+        $p1 = new Person();
+        $p2 = new Person();
+        $p3 = new Person();
+    ?>
+
+6.如何去使用对象中的成员
+
+  $p1=new Person(); 怎么去使用对象的成员呢？要想访问对象中的成员就要使用一个特殊的操作符”->”来完成对象成员的访问：
+
+  对象->属性 $p1->name; $p2->age; $p3->sex;
+
+  对象->方法 $p1->say(); $p2->run(); 如下面实例:
+
+      <?php
+    class Person {
+        // 下面是人的成员属性
+        var $name;      // 人的名子
+        var $sex;       // 人的性别
+        var $age;       // 人的年龄
+
+        // 下面是人的成员方法
+        function say() { // 这个人可以说话的方法
+            echo "这个人在说话";
+        }
+
+        function run() { // 这个人可以走路的方法
+            echo "这个人在走路";
+        }
+    }
+
+    $p1 = new Person(); // 创建实例对象$p1
+    $p2 = new Person(); // 创建实例对象$p2
+    $p3 = new Person(); // 创建实例对象$p3
+
+    // 下面三行是给$p1对象属性赋值
+    $p1->name = "张三";
+    $p1->sex = "男";
+    $p1->age = 20;
+
+    // 下面三行是访问$p1对象的属性
+    echo "p1对象的名子是：" . $p1->name;
+    echo "p1对象的性别是：" . $p1->sex;
+    echo "p1对象的年龄是：" . $p1->age;
+
+    // 下面两行访问$p1对象中的方法
+    $p1->say();
+    $p1->run();
+
+    // 下面三行是给$p2对象属性赋值
+    $p2->name = "李四";
+    $p2->sex = "女";
+    $p2->age = 30;
+
+    // 下面三行是访问$p2对象的属性
+    echo "p2对象的名子是：" . $p2->name;
+    echo "p2对象的性别是：" . $p2->sex;
+    echo "p2对象的年龄是：" . $p2->age;
+
+    // 下面两行访问$p2对象中的方法
+    $p2->say();
+    $p2->run();
+
+    // 下面三行是给$p3对象属性赋值
+    $p3->name="王五";
+    $p3->sex="男";
+    $p3->age=40;
+
+    // 下面三行是访问$p3对象的属性
+    echo "p3对象的名子是：" . $p3->name;
+    echo "p3对象的性别是：" . $p3->sex;
+    echo "p3对象的年龄是：" . $p3->age;
+
+    // 下面两行访问$p3对象中的方法
+    $p3->say();
+    $p3->run();
+    ?>
+
+7.特殊的引用"$this"的使用
+
+  $this就是对象内部代表这个对象的引用，在对象内部和调用本对象的成员和对象外部调用对象的成员所使用的方式是一样的。
+
+    $this->属性： $this->name; $this->age; $this->sex;
+
+    $this->方法 ：$this->say(); $this->run();
+
+        <?php
+    class Person {
+        // 下面是人的成员属性
+        var $name; // 人的名子
+        var $sex; // 人的性别
+        var $age; // 人的年龄
+
+        // 下面是人的成员方法
+        function say() { // 这个人可以说话的方法
+            echo "我的名子叫：" . $this->name . " 性别：" . $this->sex . " 我的年龄是：" . $this->age;
+        }
+
+        function run() { // 这个人可以走路的方法
+            echo "这个人在走路";
+        }
+    }
+
+    $p1 = new Person(); // 创建实例对象$p1
+    $p2 = new Person(); // 创建实例对象$p2
+    $p3 = new Person(); // 创建实例对象$p3
+
+    // 下面三行是给$p1对象属性赋值
+    $p1->name = "张三";
+    $p1->sex = "男";
+    $p1->age = 20;
+
+    // 下面访问$p1对象中的说话方法
+    $p1->say();
+
+    // 下面三行是给$p2对象属性赋值
+    $p2->name = "李四";
+    $p2->sex = "女";
+    $p2->age = 30;
+
+    // 下面访问$p2对象中的说话方法
+    $p2->say();
+
+    // 下面三行是给$p3对象属性赋值
+    $p3->name = "王五";
+    $p3->sex = "男";
+    $p3->age = 40;
+
+    // 下面访问$p3对象中的说话方法
+    $p3->say();
+    ?>
+
+8.构造方法__construct()与析构方法__destruct()
+
+    构造函数 自动调用
+
+    格式：function __construct ( [参数] ) { ... ... }
+
+    在一个类中只能声明一个构造方法，而是只有在每次创建对象的时候都会去调用一次构造方法，不能主动的调用这个方法，所以通常用它执行一些有用的初始化任务。比如对成属性在创建对象的时候赋初值
+
+        <?php
+    // 创建一个人类
+    class Person {
+        // 下面是人的成员属性
+        var $name;  // 人的名子
+        var $sex;   // 人的性别
+        var $age;   // 人的年龄
+
+        // 定义一个构造方法参数为姓名$name、性别$sex和年龄$age
+        function __construct($name, $sex, $age) {
+            // 通过构造方法传进来的$name给成员属性$this->name赋初使值
+            $this->name = $name;
+
+            // 通过构造方法传进来的$sex给成员属性$this->sex赋初使值
+            $this->sex = $sex;
+
+            // 通过构造方法传进来的$age给成员属性$this->age赋初使值
+            $this->age = $age;
+        }
+
+        // 这个人的说话方法
+        function say() {
+            echo "我的名子叫：" . $this->name . " 性别：" . $this->sex . " 我的年龄是：" . $this->age;
+        }
+    }
+
+    // 通过构造方法创建3个对象$p1、p2、$p3,分别传入三个不同的实参为姓名、性别和年龄
+    $p1 = new Person("张三","男", 20);
+    $p2 = new Person("李四","女", 30);
+    $p3 = new Person("王五","男", 40);
+
+    // 下面访问$p1对象中的说话方法
+    $p1->say();
+
+    // 下面访问$p2对象中的说话方法
+    $p2->say();
+
+    // 下面访问$p3对象中的说话方法
+    $p3->say();
+    ?>
+
+    析构函数：构函数允许在销毁一个类之前执行的一些操作或完成一些功能，比如说关闭文件， 释放结果集等
+
+    析构函数不能带有任何参数。
+
+     格式：function __destruct ( ) { ... ... }
+
+     // 这是一个析构函数,在对象销毁前调用
+    function __destruct() {
+        echo "再见" . $this->name;
+    }
+
+    注意：
+
+    由于类实例是以堆栈的形式放在内存中，所以最后调用析构函数的时候，输出顺序是按后进先出的原则！
+
+9.封装性（var与public，protected，private的关系）
+
+    封装性是面象对象编程中的三大特性之一，封装性就是把对象的属性和服务结合成一个独立的相同单位，并尽可能隐蔽对象的内部细节，包含两个含义：
+
+    把对象的全部属性和全部服务结合在一起，形成一个不可分割的独立单位（即对象）。
+    信息隐蔽，即尽可能隐蔽对象的内部细节，对外形成一个边界〔或者说形成一道屏障〕，只保留有限的对外接口使之与外部发生联系。
+
+    private $name;  // 把人的姓名使用private关键字进行封装
+    private $sex;   // 把人的性别使用private关键字进行封装
+    private $age;   // 把人的年龄使用private关键字进行封装
+    private function run(){……} // 把人的走路方法使用private关键字进行封装
+
+    注意：只要是成员属性前面有其它的关键字就要去掉原有的关键字”var”。
+
+    1️⃣.因为构造方法是默认的公有方法（构造方法不要设置成私有的），所以在类的外面可以访问到，这样就可以使用构造方法创建对象，
+
+    2️⃣.私有的成员只能在类的内部使用， 不能被类外部直接来存取， 但是在类的内部是有权限访问的
+
+10.__set()，__get()，__isset()，__unset()四个方法的应用
+
+   ”__get()”和”__set()”来获取和赋值其属性，以及检查属性的”__isset()”和删除属性的方法”__unset()”
+
+   __get() 方法用来获取私有属性
+
+   function __get($property_name){
+
+      if(isset($this->$property_name)){
+
+      return $this->$property_name;
+
+      }else{
+
+      return  NULL;
+      }
+   }
+
+   function __set($property_name,$value){
+
+      $this->$property_name = $value;
+
+   }
+
+   __get()方法：用来获取私有成员的属性值，有一个参数，参数传入你要获取的成员属性的名称
+
+       <?php
+    class Person {
+        // 下面是人的成员属性， 都是封装的私有成员
+        private $name;      //人的名子
+        private $sex;       //人的性别
+        private $age;       //人的年龄
+
+        // __get()方法用来获取私有属性
+        function __get($property_name) {
+            echo "在直接获取私有属性值的时候，自动调用了这个__get()方法<br />";
+            if (isset($this->$property_name)) {
+                return ($this->$property_name);
+            } else {
+                return NULL;
+            }
+        }
+
+        // __set()方法用来设置私有属性
+        function __set($property_name, $value) {
+            echo "在直接设置私有属性值的时候，自动调用了这个__set()方法为私有属性赋值<br />";
+            $this->$property_name = $value;
+        }
+    }
+
+    $p1 = new Person();
+
+    // 直接为私有属性赋值的操作， 会自动调用__set()方法进行赋值
+    $p1->name = "张三";
+    $p1->sex = "男";
+    $p1->age = 20;
+
+    // 直接获取私有属性的值， 会自动调用__get()方法，返回成员属性的值
+    echo "姓名：" . $p1->name . "<br />";
+    echo "性别：" . $p1->sex . "<br />";
+    echo "年龄：" . $p1->age . "<br />";
+    ?>
+
+    __isset() 方法：
+
+    isset()是测定变量是否设定用的函数，传入一个变量作为参数，如果传入的变量存在则传回true，否则传回false。
+
+    private function __isset($nm) {
+    echo "当在类外部使用isset()函数测定私有成员$nm时，自动调用<br />";
+    return isset($this->$nm);
+    }
+
+    __unset()方法：
+
+    “unset()”这个函数的作用是删除指定的变量且传回true，参数为要删除的变量
+
+    private function __unset($nm) {
+    echo "当在类外部使用unset()函数来删除私有成员时自动调用的<br />";
+    unset($this->$nm);
+    }
+
+        <?php
+    class Person {
+        // 下面是人的成员属性
+        private $name;      // 人的名子
+        private $sex;       // 人的性别
+        private $age;       // 人的年龄
+
+        // __get()方法用来获取私有属性
+        private function __get($property_name) {
+            if (isset($this->$property_name)) {
+                return ($this->$property_name);
+            } else {
+                return NULL;
+            }
+        }
+
+        // __set()方法用来设置私有属性
+        private function __set($property_name, $value) {
+            $this->$property_name = $value;
+        }
+
+        // __isset()方法
+        private function __isset($nm) {
+            echo "isset()函数测定私有成员时，自动调用<br />";
+            return isset($this->$nm);
+        }
+
+        //__unset()方法
+        private function __unset($nm) {
+            echo "当在类外部使用unset()函数来删除私有成员时自动调用的<br />";
+            unset($this->$nm);
+        }
+    }
+
+    $p1 = new Person();
+    $p1->name = "this is a person name";
+
+    // 在使用isset()函数测定私有成员时，自动调用__isset()方法帮我们完成，返回结果为true
+    echo var_dump(isset($p1->name)) . "<br >";
+    echo $p1->name . "<br />";
+
+    // 在使用unset()函数删除私有成员时，自动调用__unset()方法帮我们完成，删除name私有属性
+    unset($p1->name);
+
+    // 已经被删除了，所这行不会有输出
+    echo $p1->name;
+    ?>
+
+    __set()、__get()、__isset()、__unset() 这四个方法都是我们添加到对象里面的，在需要时自动调用的，来完成在对象外部对对象内部私有属性的操作。
+
+    最后补充说明：
+
+    1、__set()， __get() 是专门为类的私有属性（private、protected）设立的，对于类的公开（public）属性，外面是可以直接访问与设置的（如：$p1->name），即不走__set()，__get()函数的！！！
+
+    2、在PHP5.3及以后，上述魔术方法（__get(),__set(),__isset(),__unset() 等）提倡是 public 类型的，并且不是 static 方法，否则会给出警告信息！
+
+11.类的继承
+
+   在PHP和Java语言里面没有多继承，只有单继承，也就是说，一个类只能直接从一个类中继承数据， 这就是我们所说的单继承。
+
+   使用extends关键字
+
+13.访问类型（public，protected，private）
+
+  public （共有的，默认的） protected （受保护的）   private （私有的）
+
+  public  没有访问限制，所有的外部和内部都可以访问
+
+  private  私有修饰符，对于同一个类的所有成员是可见的，没有访问限制，但是对于该类的外部代码是不予许改变甚至读写操作的，对于该类的子类，也不允许访问private修饰的成员
+
+  protected 保护成员修饰符，不能被该类的外部代码访问，但是对于该类的子类有访问权限，可以进行属性，方法的读写操作，该子类的外部代码包括其的子类都不具有访问其属性和方法的权限。
+
+              private 	protected 	public
+  同一个类中 	  √ 	        √ 	       √
+  类的子类中 		            √          √
+  所有的外部成员 			                  √
+
+  另外在子类覆盖父类的方法时也要注意一点，子类中方法的访问权限一定不能低于父类被覆盖方法的访问权限，也就是一定要高于或等于父类方法的访问权限。
+
+  例如，如果父类方法的访问权限是protected，那么子类中要覆盖的权限就要是protected和public，如果父类的方法是public那么子类中要覆盖的方法只能也是public，总之子类中的方法总是要高于或等于父类被覆盖方法的访问权限。
+
+14. final 关键字的运用
+
+    这个关键字只能定义类和定义方法，不能使用fianl关键字来定义成员属性，因为final是常量的意思，我们在php里面定义常量使用的是define（）函数，所以不能用final来定义成员属性
+
+    使用final关键标记的类不能被继承
+
+    使用final关键字标记的方法不能被子类覆盖，是最终版本
+
+15.static 和 const 关键字的使用 （self::)
+
+   static 关键字是在类中描述成员属性和成员方法； 静态成员
+
+   static 成员能够限制外部的访问，因为static成员是属于类的，是不属于任何对象实例的，是在类第一次被加载的时候分配的空间，其他的类是无法访问的，只对类的实例共享，能一定程度对类的成员行程保护。
+
+   类的静态变量，非常类似全局变量，能够被所有类的实例共享，类的静态方法也是一样的，类似于全局函数。
+
+   <?php
+
+    class Person{
+
+     public static $mycountry = "中国";
+
+     public static function say(){
+
+         echo "我是中国人";
+
+     }
+     }
+
+    //输出静态属性
+
+    echo Person::$mycountry;
+
+    echo Person::say();
+
+    //重新给静态成员赋值
+
+    Person::$mycountry="美国";
+
+    echo Person::$mycountry;
+
+    ?>
+
+    类里面的静态方法只能访问类的静态属性，在类里面的静态方法是不能访问类的非静态成员的，
+
+    静态的方法是不用对象调用的，而是使用类名来访问
+
+
+    <?php
+
+    class Person{
+
+    public static $mycountry = "中国";
+
+    public static function say(){
+
+      echo "我是".self::$mycountry."人";
+
+    }
+    }
+    //访问静态的方法
+
+    Person::say();
+
+    ?>
+
+    const是一个定义常量的关键字
+
+    用“const”修饰的成员属性的访问方式和“static”修饰的成员访问的方式差不多，也是使用“类名”，在方法里面使用“self”关键字。但是不用使用“$”符号，也不能使用对象来访问。
+
+    <?PHP
+
+    class Person{
+
+     const  constant ='constant value';
+
+     function showConstant(){
+
+       echo self::constant;      //使用self访问，不要加$
+
+     }
+    }
+
+    echo Person::constant;
+
+    $class = new Person();
+
+    $class->showConstant();
+
+    // echo $class::constant; // 是不允许的
+    ?>
+
+16. __toString()方法
+
+    __toString()”方法一定要有个返回值（return 语句）,自动调用
+
+    <?php
+
+    class {
+
+     public $foo;
+
+     public function __toString($foo){
+
+     $this->foo = $foo;
+
+     }
+
+     // 定义一个 __toString() 方法 ，返回一个成员属性
+
+      public __toString(){
+
+      return $this->foo;
+
+      }
+
+    }
+
+    $class = new class('hello');
+
+    echo $class;
+    ?>
+
+17.克隆对象  __clone()方法
+
+    <?php
+    class Person {
+     // 下面是人的成员属性
+     private $name;  // 人的名子
+     private $sex;   // 人的性别
+     private $age;   // 人的年龄
+
+     // 定义一个构造方法参数为属性姓名$name、性别$sex和年龄$age进行赋值
+     function __construct($name = "", $sex = "", $age = "") {
+         $this->name = $name;
+         $this->sex = $sex;
+         $this->age = $age;
+     }
+
+     // 这个人可以说话的方法，说出自己的属性
+     function say() {
+         echo "我的名子叫：" . $this->name . " 性别：" . $this->sex . " 我的年龄是：" . $this->age . "<br>";
+     }
+    }
+
+    $p1 = new Person("张三", "男", 20);
+
+    // 使用“clone”克隆新对象p2，和p1对象具有相同的属性和方法。
+    $p2 = clone $p1;
+    $p2->say();
+
+    “__clone()”方法可以没有参数，它自动包含$this和$that两个指针，$this指向复本，而$that指向原本；
+
+    // 对象克隆时自动调用的方法, 如果想在克隆后改变原对象的内容，需要在__clone()中重写原本的属性和方法
+   function __clone() {
+       // $this指的复本p2, 而$that是指向原本p1，这样就在本方法里，改变了复本的属性。
+       $this->name = "我是假的 $that->name";
+       $this->age = 30;
+   }
+
+18. __call()处理调用错误
+
+    调用不存在的方法时自动调用的方法“__call()”
+
+        <?php
+    // 这是一个测试的类，里面没有属性和方法
+    class Test {
+        // 调用不存的方法时自动调用的方法，第一个参数为方法名，第二个参数是数组参数
+        function __call($function_name, $args) {
+            print "你所调用的函数：$function_name(参数：";
+            print_r($args);
+            echo ")不存在！<br>";
+        }
+    }
+
+    // 产生一个Test类的对象
+    $test = new Test();
+
+    // 调用对象里不存在的方法
+    $test->demo("one", "two", "three");
+
+    // 程序不会退出可以执行到这里
+    echo "this is a test<br>";
+
+19.抽象类和抽象方法（abstract)
+
+  抽象方法就是为了方便继承而引入的
+
+  什么是抽象方法？ ：在类里面定义的没有方法体的方法就是抽象方法，在声明一个抽象方法的时候，需要加一个abstract
+
+  例如：
+
+  abstract function fun1();
+
+  abstract function fun2();
+
+  什么是抽象类呢？：只要一个类里面有一个方法是抽象方法，那么这个类就是抽象类，抽象类也需要用abstract来修饰
+
+  <?php
+
+  abstract class Demo{
+
+    private $test;
+
+    abstract fun1();
+
+    abstract fun2();
+
+    function fun3(){
+
+    }
+  }
+
+  ### 重点：抽象类不能实例对象，所有不能直接使用
+
+  子类必须把父类中的抽象方法全部都实现，否则子类中还存在抽象方法，那么子类还是抽象类，还是不能实例化类；
+  为什么我们非要从抽象类中继承呢？因为有的时候我们要实现一些功能就必须从抽象类中继承，否则这些功能你就实现不了，如果继承了抽象类，就要实现类其中的抽象方法；
+
+      abstract class Demo {
+        var $test;
+
+        abstract function fun1();
+        abstract function fun2();
+
+        function fun3() {
+            ...
+        }
+    }
+
+    $demo = new Demo(); // 抽象类不能产生实例对象，所以这样做是错的，实例化对象交给子类
+
+    class Test extends Demo {
+        function fun1() {
+            ...
+        }
+
+        function fun2() {
+            ...
+        }
+    }
+
+    $test = new Test(); // 子类可以实例化对象，因为实现了父类中所有抽象方法
+
+20. PHP5接口技术 （interface)
+
+  如果一个抽象类里面的所有的方法都是抽象方法，那么我们就换一种声明方法使用“接口”；也就是说接口里面所有的方法必须都是声明为抽象方法，另外接口里面不能声明变量(但可声明常量constant)，而且接口里面所有的成员都是public权限的。所以子类在实现的时候也一定要使用public权限实限。
+
+   声明一个类的时候我们使用的关键字是“class”，而接口一种特殊的类，使用的关键字是“interface”;
+
+   类的定义：  class 类名{ … } ，
+   接口的声明：interface 接口名{ …}
+
+     <?php
+  // 定义一个接口使用interface关键字，“One”为接口名称
+  interface One {
+      // 定义一个常量
+      const constant = 'constant value';
+
+      // 定义了一个抽象方法”fun1”
+      public function fun1();
+
+      // 定义了抽象方法”fun2”
+      public function fun2();
+  }
+
+  对于接口里面的成员我们就不能使用“private”的和“protected”的权限 了，都要用public或是默认的。另外在接口里面我们也声明了一个常量“constant“， 因为在接口里面不能用变量成员，所以我们要使用 const这个关键字声明
+
+  而我们定义一接口的子类去实现接口中全部抽象方法使用的关键字是**“implements**”，而不是我们前面所说的“extends”;
+
+    class Three implements one{
+
+      function fun1(){
+          ...
+      }
+
+      function fun2(){
+          ...
+      }
+
+    }
+
+    $three = new Three();
+
+    在前面我们说过，PHP是单继承的，一个类只能有一父类，但是一个类可以实现多个接口，
+
+        <?php
+    // 使用implements实现多个接口
+    class Four implemtns 接口一, 接口二, ... {
+        // 必须把所有接口中的方法都要实现才可以实例化对象。
+    }
+
+    PHP中不仅一个类可以实现多个接口，也可以在继承一个类的同时实现多个接口, 一定要先继承类再去实现接口；
+
+        <?php
+    // 使用extends继承一个类，使用implements实现多个接口
+    class Four extends 类名一 implemtns 接口一, 接口二, ... {
+        // 所有接口中的方法都要实现才可以实例化对象
+        ...
+    }
+
+21.多肽的运用
+
+多肽是除了封装和继承之外的第三个面向对象的特性之一，所谓多态性是指一段程序能够处理多种类型对象的能力
+
+    <?php
+    // 定义了一个形状的接口，里面有两个抽象方法让子类去实现
+    interface Shape {
+        function area();
+        function perimeter();
+    }
+
+    // 定义了一个矩形子类实现了形状接口中的周长和面积
+    class Rect implements Shape {
+        private $width;
+        private $height;
+
+        function __construct($width, $height) {
+            $this->width = $width;
+            $this->height = $height;
+        }
+
+        function area() {
+            return "矩形的面积是：" . ($this->width * $this->height);
+        }
+
+        function perimeter() {
+            return "矩形的周长是：" . (2 * ($this->width + $this->height));
+        }
+    }
+
+    // 定义了一个圆形子类实现了形状接口中的周长和面积
+    class  Circular implements Shape {
+        private $radius;
+
+        function __construct($radius) {
+            $this->radius=$radius;
+        }
+
+        function area() {
+            return "圆形的面积是：" . (3.14 * $this->radius * $this->radius);
+        }
+
+        function perimeter() {
+            return "圆形的周长是：" . (2 * 3.14 * $this->radius);
+        }
+    }
+
+    // 把子类矩形对象赋给形状的一个引用
+    $shape = new Rect(5, 10);
+    echo $shape->area() . "<br>";
+    echo $shape->perimeter() . "<br>";
+
+    // 把子类圆形对象赋给形状的一个引用
+    $shape = new Circular(10);
+    echo $shape->area() . "<br>";
+    echo $shape->perimeter() . "<br>";
+
+22.把对象串行化serialize()方法，__sleep()方法，__wakeup()方法
+
+  有时候需要把一个对象在网络上传输，为了方便传输，可以把整个对象转化为二进制串，等到达另一端时，再还原为原来的对象，这个过程称之为串行化(也叫序列化)，
+
+  有两种情况我们必须要把对象串行化
+
+  1.对象在网络传输的过程中要将对象串行化
+
+  2.把对象写入文件或者保存到数据库中的时候
+
+  php中serialize()返回一个字符串，
+
+  unserialize()反串行化
+
+    $p1 = new Person("张三", "男", 20);
+    $p1_string = serialize($p1);    // 把一个对象串行化，返一个字符串
+    echo $p1_string . "<br>";     // 串行化的字符串我们通常不去解析
+    $p2 = unserialize($p1_string);  // 把一个串行化的字符串反串行化形成对象$p2
+    $p2->say();
+
+    __sleep()函数不接受任何参数， 但返回一个数组，其中包含需要串行化的属性。末被包含的属性将在串行化时被忽略，如果没有__sleep()方法，PHP将保存所有属性。
+
+23. 自动加载类  __autoload();

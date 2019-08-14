@@ -1,0 +1,91 @@
+
+
+1.layer 弹框关闭之后，同时刷新父页面
+
+var index=parent.layer.getFrameIndex(window.name);
+
+parent.layer.close(index);
+
+window.parent.location.reload(); //刷新父页面
+
+
+2.layer.confirm 询问弹窗
+
+自定义弹窗：
+
+function saveBack(museId) {
+    var str = "<div><h4>会费返还</h4><p>金额：<input type='text' id='price' /></p></div>";
+    layer.confirm(str, {btn: ['确定', '取消'], title: "提示"}, function () {
+        var price = $("#price").val();
+        if (price == null || price == undefined) {
+            layer.msg('请输入金额', {icon: 2});
+        }
+        var url = "${ctx }/manage/member/Back.do?museId=" + museId + "&price=" + price;
+        $.ajax({
+            type: "post",
+            url: url,
+            data: null,
+            dataType: "json",
+            async: false,
+            success: function (data) {
+                if (data.flag == 1) {
+                    layer.msg('操作成功', {icon: 1});
+                    window.setTimeout("javascript:location.href='${ctx }/manage/member/toPage.do'", 2000);
+                } else {
+                    layer.msg(data.msg, {icon: 2});
+                }
+            }
+        });
+    });
+}
+
+删除
+
+//删除
+function deleteUser(id){
+    var url = "${ctx }/manage/member/delete.do?museId="+id;
+    layer.confirm('您确定要删除该用户吗?',{btn: ['确定', '取消'],title:"提示"}, function(){
+        $.ajax({
+            type: "post",
+            url: url,
+            data: null,
+            dataType: "json",
+            async:false,
+            success:function(data) {
+                if(data.flag == 1){
+                    layer.msg('删除成功', {icon: 1});
+                    window.setTimeout("javascript:location.href='${ctx }/manage/member/toPage.do'", 2000);
+                }else{
+                    layer.msg('删除失败', {icon: 2});
+                }
+            }
+        });
+    });
+}
+
+
+重置密码：
+
+//重置密码
+function resetPass(id){
+    var url = "${ctx }/manage/member/updatePwd.do?museId="+id;
+    layer.confirm('您确定要重置密码吗?重置后密码将变为123456',{btn: ['确定', '取消'],title:"提示"},function(){
+         $.ajax({
+             type: "post",
+             url: url,
+             data: null,
+             dataType: "json",
+             async:false,
+             success:function(data) {
+               //console.log(data);
+                 if(data.flag == 1){
+                     layer.msg('重置成功', {icon: 1});
+                 }else{
+                     layer.msg('重置失败', {icon: 2});
+                 }
+             }
+         });
+    });
+}
+
+启动和禁用
