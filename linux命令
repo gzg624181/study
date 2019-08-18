@@ -13,3 +13,14 @@ person: Gang
  比如，将/opt文件夹中的test文件，复制到/var文件夹内，并重命名为test2，命令如下：
 
  cp /opt/test /var/test2
+
+
+2.查找某一个文件的位置(例如查找searchname.php文件的位置)
+
+  find / name searchname.php
+
+  还可以用locate 来查找
+
+  locate searchname.php
+
+3.
