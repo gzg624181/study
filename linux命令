@@ -23,4 +23,17 @@ person: Gang
 
   locate searchname.php
 
-3.
+3.查看端口
+
+1.查看已连接的服务端口 (ESTABLISHED)
+    netstat-a
+2.查看所有的服务端口(LISTEN,ESTABLISHED)
+    netstat-ap
+3.查看指定端口，可以结合grep命令
+    netstat -ap | grep 8080   或  lsof -i:8888
+4.若要关闭使用这个端口的程序，使用kill + 对应的pid
+    kill -9 PID号
+
+5.查看系统里面的所有进程端口
+
+  lsof -i:端口号
