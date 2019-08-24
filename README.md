@@ -25,3 +25,7 @@
 11.PHP项目实战
 
 12.资深PHP开发工程师(PostgreSQL 数据库的学习）
+
+13.php数据缓存 redis MongoDB 学习
+
+14.PHP  websocket 学习
