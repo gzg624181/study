@@ -1,0 +1,107 @@
+
+(C)2010-2019  redis数据类型的list的命令操作和应用
+update: 2019-09-05 17:19:00
+person: Gang
+
+一. hash  类型 （数据结构）
+
+    备注：hash是没有过期时间的
+
+1.命令名称： hset
+
+  语法： hset key field value
+
+  功能： 设置hash类型的键和value
+
+  返回值： 设置成功，返回1  ，设置失败 返回0
+
+  2.命令名称：hget
+
+  语法： hget key field
+
+  功能：获取hash里面的一个字段的值
+
+  返回值：返回这个字段的value值
+
+  3. 命令名称：hgetall
+
+  语法：hgetall key
+
+  功能：获取这个key里面的所有的键值对
+
+  返回值：返回所有设置的键和值
+
+  4. 命令名称：hmset
+
+   语法：hmset key field value  [field value]
+
+   功能：一次性往这个key里面插入多个数据
+
+   返回值 ：插入成功，返回ok
+
+  5.命令名称： hmget
+
+  语法：hmget key field [field]
+
+  功能：获取所有的field的value值
+
+  返回值:返回这个key里面的field对应的value值
+
+  6.命令名称：hdel
+
+  语法：hdel key field [field]
+
+  功能：删除指定的field里面的值
+
+  返回值：删除成功，返回1  删除失败0
+
+  7.命令名称：hlen
+
+  语法：hlen key
+
+   功能：获取这个key里面的成员的个数
+
+   返回值：返回这个成员的个数 （int ）
+
+  8.命令名称：hkeys
+
+   语法：hkeys key
+
+   功能：获取这个key里面的所有的filed的值
+
+   返回值：返回这个key里面的所有的field
+
+   9.命令名称：hvals
+
+   语法：hvals  key
+
+   功能：获取这个key里面的所有的值
+
+   返回值：返回这里面的所有的值
+
+
+   10.命令名称：hexists
+
+   语法：hexists key field
+
+   功能：判断这个key 里面的 field 的值存不存在
+
+   返回值：如果存在的话 ，则返回1  ，不存在则返回0
+
+   11.命令名称： exists
+
+   语法：exists  key [key]
+
+   功能：判断数据库里面是否存在这个key
+
+   返回值：如果存在则返回1，如果不存在，则返回0
+
+   12.命令名称：hincrby
+
+   语法：hincrby key field increment
+
+   功能：将这个key里面的field自增或者自减去  相应的数字
+
+   返回值：返回自增或者自减之后的数字 （int）
+
+   13.

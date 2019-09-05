@@ -4,4 +4,84 @@ update: 2019-09-05 10:21:00
 person: Gang
 
 
-一. sort set 类型  排序集合
+一. sort set 类型  排序集合  (有序的集合，排序 ，有顺序的)
+
+1.命令名称： zadd
+
+  语法： zadd key score member [score member]  (三个参数)
+
+  功能： 获取所有的键的值
+
+  返回值： 返回所有的键的名称
+
+2.命令名称： zrange
+
+  语法：zrange key 0 -1 [withscores]
+
+  功能：获取有序集合带了数字的所有的value （按照顺序排序）从小到大的顺序 ，正序的排列
+
+  返回值：所得value值
+
+3.命令名称：zrevrange
+
+  语法：zrevrange key 0 -1 【withscores】
+
+  功能：获取有序集合带了数字的所有的value （按照顺序排序）从大到小的顺序 ，降序的排列
+
+  返回值：所得的value值
+
+4.命令名称： zrank
+
+  语法：zrank key member
+
+  功能：获取这个key在这里面的下标
+
+  返回值：返回在这个key里面的具体的位置，下标
+
+5.命令名称： zrem
+
+  语法：zrem key member
+
+  功能：删除这个key里面的具体的成员
+
+  返回值：删除成功，返回1，删除失败，返回0
+
+6.命令名称： zincrby
+
+ 语法：zincrby key increament members
+
+ 功能：选定一个成员，自增或者自减
+
+ 返回值：计算之后的score的值
+
+ 7. 命令名称：zscard
+
+ 语法： zcard key
+
+ 功能：获取这个成员里面的成员的数量
+
+ 返回值：计算之后的成员的数量（int）
+
+ 8. 命令名称： zscore
+
+ 语法：zscore key member
+
+ 功能：获取这个key的成员的score的值
+
+ 返回值：返回这个score
+
+ 9. 命令名称： zcount
+
+  语法：zcount key min max
+
+  功能：获取这个key在最小值和最大值之间的成员
+
+  返回值：返回这个区间里面的成员的个数（int）
+
+10. 命令名称： zremrangebyscore
+
+  语法：zremrangebyscore  key min max
+
+  功能：删除在某个元素之间的值
+
+  返回值：删除成功，返回1，删除失败 ，返回0

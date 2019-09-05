@@ -18,9 +18,9 @@
 
 8.深入学习ThinkPHP框架
 
-9.深入学习 Laravel 框架 
+9.深入学习 Laravel 框架
 
-10.深入学习Yii框架 
+10.深入学习Yii框架
 
 11.PHP项目实战
 

@@ -1,0 +1,40 @@
+
+(C)2010-2019  git命令的学习
+update: 2019-08-19 00:11:10
+person: Gang
+
+
+git push错误failed to push some refs to的解决
+
+解决方案
+这个问题是因为远程库与本地库不一致造成的，那么我们把远程库同步到本地库就可以了。
+使用指令
+
+git pull --rebase origin master
+1
+这条指令的意思是把远程库中的更新合并到本地库中，–rebase的作用是取消掉本地库中刚刚的commit，并把他们接到更新后的版本库之中。
+
+
+常用bash命令
+
+# change directory  更改文件夹
+
+  cd
+
+# move    移动文件内容
+
+  mv
+
+# make directory  新建文件夹
+
+  mkdir
+
+#copy   复制内容
+
+  cp linux里面复制内容
+
+#print working directory   显示当前文件夹的路径
+
+Pwd
+
+#remove     删除文件内容`

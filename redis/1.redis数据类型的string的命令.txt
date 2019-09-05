@@ -151,3 +151,22 @@ person: Gang
    功能：截取指定的key里面的value
 
    返回值：返回截取之后的value
+
+
+19.命令名称：setex
+
+   语法：setex key seconds value
+
+   功能：给指定的key 设置过期时间
+
+   返回值:设置成功，则返回1，设置失败，则返回0
+
+20. 命令名称：setnx
+
+    语法：setnx key value
+
+    功能：给新的key设置value  ，如果有这个key，则添加失败，如果没有，则新弄一个key出来
+
+    返回值：设置成功，返回1，设置失败，返回0
+
+    
