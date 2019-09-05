@@ -1,0 +1,153 @@
+
+(C)2010-2019  redis键的过期时长的操作
+update: 2019-09-03 17:37:10
+person: Gang
+
+
+一. string  类型
+
+1.命令名称：  expire
+
+  语法： expire key seconds
+
+  功能： 为给定的key设置生存时间，当key过期时（生存时间为0）它会被自动删除。
+
+  返回值： 设置成功返回1，否则返回0
+
+  返回剩余的过期时间  ttl key
+
+2.命令名称： keys
+
+  语法： keys *
+
+  功能： 获取所有的键的值
+
+  返回值： 返回所有的键的名称
+
+3.命令名称：del
+
+  语法：del key
+
+  功能：删除给定的key的值
+
+  返回值：删除成功返回1，否则返回0
+
+4.命令名称： type
+
+  语法：  type key
+
+  功能： 获取给定的key的类型
+
+  返回值：string，hash，list，set，zset
+
+5.命令名称： rename
+
+  语法： rename  key newkey
+
+  功能：给指定的key改名称
+
+  返回值：更改成功 ，返回OK
+
+6.命令名称：dbsize
+
+  语法：dbsize
+
+  功能：获取数据库里面存了多少个key
+
+  返回值：返回的key的数量
+
+7. 命令名称：flushdb
+
+  语法：flushdb
+
+  功能：删除默认数据库里面所有的key
+
+  返回值：清空成功之后返回ok
+
+8. 命令名称：select
+
+   语法 ：select  1  （reids默认有16个数据库 ，从0-15）
+
+   功能：选择切换到哪一个数据库，redis默认数据库 database0
+
+   返回值：切换成功之后返回ok
+
+9.命令名称：move
+
+  语法：move  key  1
+
+  功能：移动指定的key到指定的数据库里面去
+
+  返回值：移动成功之后返回ok
+
+10. 命令名称：randomkey
+
+  语法：randomkey
+
+  功能：随机获取一个内存里面的key
+
+  返回值：返回的key的值
+
+11. 命令名称：mset
+
+  语法：mset  key1 value1  key2 value2 key3 value3
+
+  功能：一次性设置多个key和value的值
+
+  返回值：设置成功 ，返回ok
+
+12.命令名称：mget
+
+  语法： mget key1 key2 key3
+
+  功能： 一次性获取多个key的value的值
+
+  返回值：返回指定的多个key的value的值
+
+13.命令名称 ： incr
+
+  语法： incr  key
+
+  功能： 让指定的key自动加上1
+
+  返回值：返回指定的key加上1之后的数字
+
+14.命令名称 ： decr
+
+    语法： decr  key
+
+    功能： 让指定的key自动减去1
+
+    返回值：返回指定的key减去1之后的数字
+
+15.命令名称： incrby
+
+   语法：incrby key int(数字)
+
+   功能：让指定的key自动加上指定的数字
+
+   返回值：返回加上指定的数字的value值
+
+16.命令名称 ： decrby
+
+   语法：decrby  key int（数字）
+
+   功能：让指定的key自动减去指定的数字
+
+   返回值：返回减去指定的数字的value值
+
+17. 命令名称：append
+
+   语法：append key value
+
+   功能： 向指定的key里面追加value
+
+   返回值：返回指定的key更新后的vlue
+
+18.命令名称：substr
+
+   语法：substr key 1 4  (从0开始计算截取 )
+
+   功能：截取指定的key里面的value
+
+   返回值：返回截取之后的value

@@ -20,12 +20,10 @@ person: Gang
 
 #copy   复制内容
 
-  cp
+  cp linux里面复制内容
 
 #print working directory   显示当前文件夹的路径
 
 Pwd
 
-#remove     删除文件内容
-
- rm     rm -rf （删除文件夹）
+#remove     删除文件内容`

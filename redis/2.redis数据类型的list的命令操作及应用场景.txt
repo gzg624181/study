@@ -1,0 +1,89 @@
+
+(C)2010-2019  redis数据类型的list的命令操作和应用
+update: 2019-09-04 11:40:00
+person: Gang
+
+
+一. list  类型  (有序列表集合，里面的值是可以重复的)
+
+   push  往里面放
+
+   pop   往外拿
+
+   1.命令名称：  lpush
+
+     语法：lpush key value [value .....]（可以放入多个value）
+
+     功能：从左边往管道里面放入
+
+     返回值：返回这个key的长度
+
+   2. 命令名称： lrange
+
+     语法： lrange key start stop
+
+     功能：获取key里的value值  （lrange key  0 -1） 将key里面全部打印出来
+
+  3. 命令名称： rpush
+
+    语法： rpush key value [value ......](可以放入多个value)
+
+    功能：从右边开始往管道里面插入数据
+
+    返回值：返回这个key的长度
+
+  4. 命令名称： lpop
+
+     语法：lpop key
+
+     功能：从左边管道开始，取出第一个key的value值
+
+     返回值：返回这个key的从左边开始的第一个value的值
+
+  5.命令名称  rpop
+
+    语法：rpop  key
+
+    功能：从右边管道开始，取出第一个key的value值
+
+    返回值：返回这个key的从右边开始的第一个value值
+
+ 6.命令名称：lset
+
+   语法：  lset key index value
+
+   功能：将key里面的第n个值进行修改
+
+   返回值：修改成功，返回ok
+
+ 7.命令名称： llen
+
+   语法： llen key
+
+   功能：将key里面的长度获取出来
+
+   返回值：返回key这个列表的长度 （int）
+
+
+  8.命令名称： lrem
+
+  语法：lrem key count  value
+
+  功能：删除指定的key 里面有count个和value相同的值
+
+  返回值：删除成功  ，返回1 int  删除失败 ，返回0
+
+  9.命令名称： ltrim
+
+   语法： ltrim key start stop
+
+   功能：从指定的key里面截取多少个value
+
+   返回值：返回指定的截取的value值
+
+
+二. 应用场景 ：队列
+
+   秒杀 ，发短信，发邮箱，（可以解决同时发生高并发的操作）
+
+   相当于将同步改成异步，排队，先进先去

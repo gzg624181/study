@@ -37,3 +37,6 @@ person: Gang
 5.查看系统里面的所有进程端口
 
   lsof -i:端口号
+
+
+netstat -nltp

@@ -1,0 +1,95 @@
+
+(C)2010-2019  redis数据类型的list的命令操作和应用
+update: 2019-09-04 14:26:00
+person: Gang
+
+
+一 .set 集合类型  (无序列表集合，里面的值是不可以重复的) 交 并 差
+
+      1.命令名称：  sadd
+
+      语法：sadd  key member  [member .....]（可以放入多个member）
+
+      功能：新增一个key的无序集合，添加成员的时候，不允许有重复的值
+
+      返回值：返回这个key的长度
+
+      2.命令名称：smembers  （获取这个猪圈里面的所有成员全部列出来）
+
+      语法：smembers key
+
+      功能：获取key里面的成员的值
+
+      返回值：列出这个key的成员的值
+
+      3.命令名称：  sismember
+
+      语法：sismember key member
+
+      返回值：如果这个成员在这个key里面，则返回1，如果不在，则返回0
+
+      4.命令名称：srem
+
+      语法：srem key member [member ...]
+
+      功能：删除这个key里面的成员，可以删除多个
+
+      返回值：删除成功，返回1，
+
+      5.命令名称：scard
+
+      语法 ： scard  key
+
+      功能： 返回这个key的成员的个数
+
+      返回值：返回的成员的个数  integer
+
+      6. 命令名称： sinter
+
+      语法：sinter key  key [key ...]
+
+      功能：返回多个key的交集
+
+      返回值：返回这个key的 里面的相同的交集
+
+      7.命令名称：sinterstore
+
+      语法：sinterstore destination key [key....]
+
+      功能：将相同的交集的成员存储到目标集（destination) 里面去
+
+      返回值：返回公共的成员的数量 int
+
+      8.命令名称：sunion
+
+       语法：sunion key [key ....]
+
+       功能：将多个key里面的所有的成员 ，包括相同的成员集合起来，相当于并集
+
+       返回值：返回并集之后的素有的成员的值
+
+       9.命令名称：sunionstore
+
+       语法：sunionstore destination key [key...]
+
+       功能：将多个并集保存到一个集合里面去
+
+       返回值：返回这个集合的里面成员的数量（int）
+
+       10.命令名称：sdiff
+
+       语法：sdiff key  [key...]
+
+       功能：将两个集合进行求差判断 ，相当于 在两个集合里   ，key1有的 ，key2没有的集合找出来
+
+       返回值：返回两个集合相差的成员
+
+       11.命令名称：sdiffstroe
+
+       语法：sdiffstroe destination key [key ...]
+
+       功能： 将两个集合相差的保存到目标集合（destination)里面去
+
+       返回值：返回这个集合里面的成员的数量（int）
+
+       12.
