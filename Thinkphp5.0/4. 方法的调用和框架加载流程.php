@@ -10,14 +10,18 @@ person: Gang
 
   <1>. 调用当前控制器的test,index方法（使用面向对象的方法）
 
+<?php
 echo  $this->test();
 
 echo  self::test();
 
 echo  Index::test();
 
+?>
+
   <2>.使用系统方法
-echo action('index');
+
+  echo action('index');
 
   <3>.调用User控制器下的index方法
 

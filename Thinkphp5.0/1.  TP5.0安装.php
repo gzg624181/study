@@ -63,5 +63,3 @@ person: Gang
      git clone https://github.com/top-think/framework thinkphp
 
      5.配置虚拟主机
-
-     

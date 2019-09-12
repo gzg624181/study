@@ -1,5 +1,6 @@
 
 
+
 (C)2010-2019  目录结构
 update: 2019-8-21 21:48:10
 person: Gang
@@ -29,7 +30,7 @@ person: Gang
   详细目录结构：
 
   project  应用部署目录
-  
+
 ├─application           应用目录（可设置）
 │  ├─common             公共模块目录（可更改）
 │  ├─index              模块目录(可更改)
